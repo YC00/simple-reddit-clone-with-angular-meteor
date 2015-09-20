@@ -1,0 +1,49 @@
+<div layout="row" flex class="ma-party-details">
+  <div flex="80" offset="10">
+    <!--<legend style="margin:20px 0;">
+      Here you will see and change the details of the party:
+    </legend>-->
+    <form layout="column" ng-hide="party.owner != $root.currentUser._id">
+      <md-input-container>
+        <label>Title</label>
+        <input ng-model="party.name" ng-disabled="party.owner != $root.currentUser._id" type="text" aria-label="Name">
+      </md-input-container>
+      <md-input-container>
+        <label>URL</label>
+        <input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id" type="text" aria-label="Description">
+      </md-input-container>
+      <span flex>or</span>
+      <md-input-container>
+        <label>Text</label>
+        <textarea rows="2" cols="50" ng-model="party.text" ng-disabled="party.owner != $root.currentUser._id" aria-label="Text"></textarea>
+      </md-input-container>
+      <md-checkbox ng-model="party.public" ng-hide="true" ng-disabled="party.owner != $root.currentUser._id" aria-label="Public">
+        Is public
+      </md-checkbox>
+
+      <div layout="row" layout-align="left">
+        <md-button ng-click="save()">Save</md-button>
+        <md-button ng-click="reset()">Reset form</md-button>
+        <md-button ng-href="/parties">Cancel</md-button>
+      </div>
+
+      <!--<md-list ng-show="canInvite()">
+        <md-subheader class="md-no-sticky">Users to invite:</md-subheader>
+        <md-list-item ng-repeat="user in users | uninvited:party">
+          <div>{{ user | displayName }}</div>
+          <md-button ng-click="invite(user)">Invite</md-button>
+        </md-list-item>
+        <md-list-item ng-if="(users | uninvited:party).length <= 0">
+          Everyone are already invited.
+        </md-list-item>
+      </md-list>
+
+      <div class="angular-google-map-container">
+        <ui-gmap-google-map center="map.center" events="map.events" zoom="map.zoom">
+          <ui-gmap-marker coords="party.location" options="map.marker.options" events="map.marker.events" idkey="party._id">
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div>-->
+    </form>
+  </div>
+</div>

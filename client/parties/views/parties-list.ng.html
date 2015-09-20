@@ -1,0 +1,77 @@
+<md-content flex-gt-sm layout-gt-sm="row" class="ma-parties-list">
+  <div layout-gt-sm="row" flex-gt-sm>
+    <div flex-gt-sm="100" flex-sm>
+      <!--<div>
+        <div layout-padding layout="row">
+          <md-input-container style="width:50%;margin-right:10px;">
+            <label>Search</label>
+            <input type="text" ng-model="search"/>
+          </md-input-container>
+          <md-select ng-model="orderProperty" placeholder="Sort Order" >
+            <md-option value="1">Ascending</md-option>
+            <md-option value="-1">Descending</md-option>
+          </md-select>
+          <md-button class="md-fab" aria-label="Eat cake" ng-click="openAddNewPartyModal()">
+            <md-icon md-font-set="material-icons"> add </md-icon>
+          </md-button>
+        </div>
+      </div>-->
+      <md-button class="md-fab" aria-label="Eat cake" ng-click="openAddNewPartyModal()">
+            <md-icon md-font-set="material-icons"> add </md-icon>
+          </md-button>
+      <md-content class="md-padding" style="padding-top:0;">
+        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+        <div  dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" class="ma-party">
+          <md-card>
+            <div ng-if="party.images && party.images.length > 0"
+                 ng-style="getMainImage(party.images)"
+                 class="party-image">
+            </div>
+            <md-card-content>
+              <h2 class="md-title ma-name" style="" ng-click="redirectTo(party)">{{party.name}} <small style="color:#aaa;">{{party.description}}</small></h2>
+              <p class="ma-description" style="padding:0 10px;margin-bottom:35px;margin-top: 6px;" ng-show="party.text">{{party.text}}</p>
+
+
+              <div layout="row">
+                <div flex="1">
+                  <p style="margin-top:0px;margin-bottom:3px;font-size:14px;color:#aaa;">
+                    <small>Posted by {{ creator(party) | displayName }}</small>
+                    <small ng-show="creator(party)=='me'"> | <a href="parties/{{party._id}}">edit</a></small>
+                    <small ng-show="creator(party)=='me'"> | <a href="javascript:void(0)" ng-click="removeRSVP(party)">delete</a></small>
+                    <!--<span ng-if="party.public" style="font-size:12px;color:#999;">| Everyone is invited</span>-->
+                  </p>
+
+                  <div ng-show="$root.currentUser" class="md-actions" layout="row">   
+                    <md-icon md-font-set="material-icons" ng-click="rsvp(party._id, 'yes')" ng-style="isRSVP('yes', party)?{color: '#02A8F3'}:{}"> &#xE8DC; </md-icon>
+                    <div class="rsvps-sum">
+                      <div class="rsvps-amount">{{ ((party.rsvps | filter:{rsvp:'yes'}).length || 0)-((party.rsvps | filter:{rsvp:'no'}).length || 0)  }}</div>
+                    </div>
+                    <md-icon md-font-set="material-icons" ng-click="rsvp(party._id, 'no')" ng-style="isRSVP('no', party)?{color: '#02A8F3'}:{}"> &#xE8DB; </md-icon>
+                    <!--<md-button ng-click="rsvp(party._id, 'maybe')">Maybe</md-button>-->
+                  </div>
+                </div>
+                <div  layout="row" layout-align="end end">
+                  <div ng-hide="$root.currentUser" style="font-size:13px;margin-bottom:10px;">
+                    Sign in to RSVP for this party
+                  </div>
+                  <div>
+                
+                    <!--<div class="rsvps-sum">
+                      <div class="rsvps-amount">{{ (party.rsvps | filter:{rsvp:'maybe'}).length || "0" }}</div>
+                      <div class="rsvps-title">Maybe</div>
+                    </div>
+                    <div class="rsvps-sum">
+                      <div class="rsvps-amount">{{ (party.rsvps | filter:{rsvp:'no'}).length || "0" }}</div>
+                      <div class="rsvps-title">No</div>
+                    </div>-->
+                  </div>
+                </div>
+              </div>
+            </md-card-content>
+          </md-card>
+        </div>
+      </md-content>
+
+    </div>
+  </div>
+</md-content>

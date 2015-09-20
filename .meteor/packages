@@ -1,0 +1,29 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+urigo:angular
+angularui:angular-ui-router
+accounts-password
+accounts-ui
+accounts-facebook
+accounts-twitter
+angularutils:pagination
+tmeasday:publish-counts
+email
+angularui:angular-google-maps
+less
+angularui:angular-ui-bootstrap@0.13.0
+twbs:bootstrap@3.3.5
+angular:angular-material
+planettraining:material-design-icons
+cfs:standard-packages
+cfs:gridfs
+danialfarid:ng-file-upload
+alexk111:ng-img-crop
+vitalets:angular-xeditable
+netanelgilad:angular-sortable-view
+cfs:graphicsmagick
